@@ -254,7 +254,7 @@ class ResNet1D(nn.Module):
         self.final_relu = nn.ReLU(inplace=True)
         # self.do = nn.Dropout(p=0.5)
         self.dense = nn.Linear(out_channels, n_classes)
-        self.sigmoid = nn.Sigmoid(dim=1)
+        self.sigmoid = nn.Sigmoid()
         
     def forward(self, x):
         
