@@ -254,7 +254,7 @@ class ResNet1D(nn.Module):
         self.final_relu = nn.ReLU(inplace=True)
         # self.do = nn.Dropout(p=0.5)
         self.dense = nn.Linear(out_channels, n_classes)
-        # self.softmax = nn.Softmax(dim=1)
+        self.sigmoid = nn.Sigmoid(dim=1)
         
     def forward(self, x):
         
@@ -290,8 +290,8 @@ class ResNet1D(nn.Module):
         out = self.dense(out)
         if self.verbose:
             print('dense', out.shape)
-        # out = self.softmax(out)
+        out = self.sigmoid(out)
         if self.verbose:
-            print('softmax', out.shape)
+            print('sigmoid', out.shape)
         
         return out    
